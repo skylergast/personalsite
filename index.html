@@ -1,0 +1,520 @@
+<html>
+	<head>
+		<meta name="google-site-verification" content="BkMSmrj1bcvYn63ZXIzNHD0MsK7N87peIyhzp8HUFPQ" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		
+		<style>			
+			html {
+				font: tahoma;				
+			}
+			body {			
+				height: 100%;	
+				margin: 0;
+				padding: 0;
+				overflow: hidden;				
+			}
+			h2, h4 {
+				margin-top: 0.2em;
+				margin-bottom: 0.2em;				
+				margin-start: 0px;
+				margin-end: 0px;
+			}
+			p {
+				margin-top: 0.5em;
+				margin-bottom: 0.5em;
+				margin-start: 0px;
+				margin-end: 0px;
+			}
+			nav {				
+				right: 20px;
+				top: 20px;
+				z-index: 1;
+			}
+			nav select {
+				display: none;
+			}
+			nav ul {
+				position: relative;
+				padding: 10px;
+				list-style-type: none;
+			}
+			nav li {
+				width: 100%;
+				line-height: 60px;
+				height: 60px;
+				text-align: center;
+			}
+			nav li a {
+				text-decoration: none;				
+				font-weight: bold;
+				font-family: tahoma;			
+				color: #1F1F1F;
+    			transition: color 250ms linear;
+			}
+			nav li a:hover {
+				color: rgb(105, 171, 255);
+    			transition: color 250ms linear;
+			}
+			a[ id="family" ]:target ~ #content article.panel {
+    			transform: translateY( 0px );
+			}
+			a[ id="development" ]:target ~ #content article.panel {
+    			transform: translateY( -100% );
+			}
+			a[ id="church" ]:target ~ #content article.panel {
+    			transform: translateY( -200% );
+			}
+			a[ id="hobbies" ]:target ~ #content article.panel {
+    			transform: translateY( -300% );
+			}
+			a[ id="contact" ]:target ~ #content article.panel {
+    			transform: translateY( -400% );
+			}
+			article.panel {
+				background-size: cover;
+				background-position: center center;
+				height: 100%;
+			    transition: transform 0.4s ease-in-out;	
+			    overflow: hidden;
+			}
+			article header {
+				width: 32%;
+				height: 80px;							
+				line-height: 80px;
+				text-align: center;
+				font-family: tahoma;
+				font-size: 2.5em;
+				font-weight: bold;					
+				background-color: #f2f2f2;
+				opacity: .6;
+				border-bottom-right-radius: 4px;				
+			}
+			article .textbox a {
+				text-decoration: none;
+				color: rgb(0, 109, 228);
+			}
+			article .textbox a:hover {				
+				color: rgb(0, 173, 228);	
+			}
+			article#family {				
+				background-image: url('images/family.jpg');								
+			}
+			article#family .textbox {
+				position: absolute;
+				top: 20px;
+				right: 200px;
+				padding: 1em;
+				width: 25%;
+			}
+			article#development {
+				background-image: url('images/dev.jpg');
+			}
+			/*
+			article#development .columns {
+				column-count: 3;
+				column-gap: 2em;
+				column-rule: 3px solid rgb(105, 171, 255);
+				column-fill:auto;
+				height: 100%;
+				width: 74%;
+				margin-left: 4em;
+				margin-right: 4em;
+				margin-top: 1em;				
+			}					
+			article#development .textbox {
+				position: relative;								
+				padding: .6em;
+				height: 80%;
+				overflow-y: auto;			
+			}
+			*/
+			article#development .textbox {
+				float: left;
+				position: relative;								
+				padding: .6em;
+				height: 80%;
+				overflow-y: auto;
+				width: 22%;
+				margin: 1em;			
+			}
+			article#development ul {
+				list-style-type: square;
+			}
+			article#church {
+				background-image: url('images/church.jpg');
+			}
+			article#church .textbox {
+				position: absolute;
+				margin-top: 2em;
+				margin-left: 2em;
+				width: 60%;
+				padding: 1em;
+			}
+			article#hobbies {
+				background-image: url('images/hobbies.jpg');
+			}
+			/*
+			article#hobbies .columns {				
+				column-count: 2;				
+				column-gap: 2em;				
+				column-rule: 3px solid rgb(105, 171, 255);				
+				height: 100%;
+				width: 65%;
+				margin-left: 4em;
+				margin-right: 4em;
+				margin-top: 1em;				
+			}						
+			article#hobbies .col {						
+				column-break-after: always;
+			}	
+			article#hobbies .textbox {
+				position: relative;								
+				padding: .6em;
+				max-height: 40%;
+				height: 40%;
+				overflow-y: auto;
+				margin-bottom: .5em;		
+			}
+			*/
+			article#hobbies .textbox {
+				position: relative;								
+				padding: .6em;
+				max-height: 40%;
+				height: 36%;
+				overflow-y: auto;
+				margin-bottom: .5em;		
+				float: left;
+				width: 30%;
+				margin: 1em;
+			}			
+			article#contact {
+				background-image: url('images/contact.jpg');
+			}
+			article#contact .textbox {
+				position: absolute;
+				margin-top: 2em;
+				margin-left: 2em;
+				padding: 10px;
+				width: 20%;
+				min-width: 20em;
+			}
+			article#contact .textbox a:hover {
+				opacity: .5;
+			}
+			.textbox {
+				opacity: 0.65;
+				background-color: white;
+				display: block;
+				border: thin white solid;
+				border-radius: 4px;
+				position: fixed;				
+				font-size: 1.2em;
+				color: #1F1F1F;
+				font-family: 'Varela Round', sans-serif;
+			}
+			.mobile {
+				display: none;
+			}
+			.desktop {
+				display: block;
+			}			
+		</style>
+		<style type="text/css">
+			@media (max-width : 320px) {
+				html, body {
+					font-size: .9em;
+					overflow: hidden;
+					height: 100%;							
+				}
+				nav ul {
+					display: none;
+				}
+				nav select {
+					display: inline-block;
+					width: 100%;
+					height: 1.8em;
+					position: inherit;
+					top: 0;
+					left: 0;
+					font-size: 1.8em;
+					font-weight: bold;
+				}
+				article header {
+					display: none;
+				}
+				.desktop {
+					display: none;
+				}
+				.mobile {
+					display: block;
+				}
+				article#family .textbox {					
+					padding: 1em;
+					position: relative;
+					top: 3.5em;
+					right: auto;
+					width: 80%;
+					margin-left: auto;
+					margin-right: auto;
+					height: 65%;											
+				}
+				article#development .textbox {					
+					float: none;
+					position: relative;
+					top: 3.5em;							
+					padding: .6em;													
+					margin: 1em;
+					width: 80%;
+					height: 22%;
+					overflow: scroll;
+				}
+				article#church .textbox {
+					position: relative;
+					top: 3.5em;
+					margin: auto;					
+					width: 80%;
+					height: 75%;
+					padding: 1em;
+					overflow: scroll;
+				}
+				article#hobbies .mobile {
+					position: relative;								
+					top: 3.5em;
+					margin: auto;
+					height: 75%;
+					overflow-y: scroll;					
+					float: none;
+					width: 80%;	
+					max-height: 75%;				
+				}
+				article#contact .textbox {
+					position: relative;
+					top: 3.5em;
+					margin: auto;
+					padding: 10px;
+					width: 80%;		
+					min-width: 80%;			
+				}				
+			}
+		</style>
+		<style>
+			@media (max-width : 1024px) {
+				article#development .textbox {					
+					float: none;
+					position: relative;
+					top: 1em;							
+					padding: .6em;													
+					margin: 1em;
+					width: 72%;
+					height: 22%;
+					overflow: scroll;
+				}
+			}
+		</style>	
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>	
+		<script language="javascript" type="text/javascript" src="scripts/prefixfree.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$("nav select").change(function() {
+  				window.location = $(this).find("option:selected").val();
+				});
+			});
+		</script>		
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-48536853-1', 'skylergast.com');
+		  ga('send', 'pageview');
+		</script>		
+	</head>
+	<body>
+		<a id='family'></a>
+		<a id='development'></a>
+		<a id='church'></a>
+		<a id='hobbies'></a>
+		<a id='contact'></a>
+		<header>	
+			<title>Skyler Gast</title>
+			<nav class='textbox'>
+				<ul>
+					<li>
+						<a href='#family'>FAMILY</a>
+					</li>
+					<li>
+						<a href='#development'>DEVELOPMENT</a>	
+					</li>
+					<li>
+						<a href='#church'>CHURCH</a>		
+					</li>
+					<li>
+						<a href='#hobbies'>HOBBIES</a>
+					</li>
+					<li>
+						<a href='#contact'>CONTACT</a>
+					</li>
+				</ul>
+				<select> 					
+				    <option value="#family">Family</option> 
+				    <option value="#development">Development</option> 
+				    <option value="#church">Church</option> 
+				    <option value="#hobbies">Hobbies</option> 
+				    <option value="#contact">Contact</option> 
+				</select>
+			</nav>
+		</header>
+		<section id='content'>
+			<article id='family' class='panel'>
+				<header>FAMILY</header>
+				<div class='textbox'>
+					<p>I currently live in Ann Arbor, MI with my family: my wife, Staci, and our son, Hudson. Staci and I have been married since March 5th, 2011.</p>
+					<p>We are originally from Texas, but moved to Michigan in August of 2013 to plant a church here in Ann Arbor.</p>
+					<p>As a family, we love having people in our home, and we desire to live our lives in a way that honors others through love, giving, and hospitality.</p>
+				</div>
+			</article>
+			<article id='development' class='panel'>
+				<header>DEVELOPMENT</header>
+				<div class='columns'>					
+					<div class='textbox'>
+						<h2>Current Role</h2>
+						<h4>Data Analyst<br/ >at Consumers Energy</h4>
+						<p>I am currently working with the Smart Energy program at Consumer's Energy in Jackson, MI. In my role, I daily maintain a large SQLServer 2008 database and analyze data for Smart Energy Operations to provide up-to-date statistics and reports on a variety of criteria. The Smart Energy program is still in a youthful state, so I am also involved in the design and development of new data analysis tools that are starting to be used now and will be used daily when the program reaches maturity.</p>
+					</div>
+					<div class='textbox'>
+						<h2>Professional Experience</h2>
+						<p>I have a background in web development, Windows development, and database administration.</p>
+						<h4>Development Skills</h4>
+						<ul>
+							<li>Test Driven Development using C#</li>							
+							<li>Web Design and Development using HTML5, CSS3, and JavaScript</li>	
+							<li>SQL for SQLServer and PostreSQL</li>
+						</ul>
+						<h4>Platforms and Tools</h4>
+						<ul>
+							<li>Windows Server</li>
+							<li>Visual Studio</li>
+							<li>SSMS and SSRS</li>
+							<li>MVC4</li>
+							<li>JavaScript frameworks<br/>Prototype and JQuery</li>
+						</ul>
+						<h2>Education</h2>
+						<p>I graduated from the University of Texas at Arlington in May 2009 with a Bachelors degree in Computer Science.</p>
+					</div>
+					<div class='textbox'>
+						<h2>Recreational Experience</h2>
+						<p>I enjoy learning new languages, tools, and platforms. I do not always get to use them in a professional setting, but I do have fun learning and using these tools for personal and side projects.</p>
+						<h4>Programming Lanuages</h4>
+						<ul>
+							<li>Python</li>
+							<li>Java</li>
+							<li>Objective-C</li>
+						</ul>
+						<h4>Platforms and Tools</h4>
+						<ul>							
+							<li>WordPress</li>
+							<li>Xamarin Studio</li>
+							<li>Eclipse</li>
+							<li>Xcode</li>
+							<li>iOS Development</li>
+							<li>Google Glass Mirror API</li>
+							<li>Google Analytics</li>
+							<li>NUnit</li>
+						</ul>
+					</div>
+				</div>
+			</article>
+			<article id='church' class='panel'>
+				<header>CHURCH</header>
+				<div class='textbox'>
+					<h2>Antioch Ann Arbor</h2>
+					<p>The sole purpose of our move to Michigan has been to plant a church that will reach Ann Arbor and Detroit. In August 2013, we moved here along with five other families to make this God-given dream become a reality. <a target='_blank' href='http://antiocha2.org'>Antioch Ann Arbor</a> is a Jesus loving church that truly believes that Jesus is the hope of the world, and that the local church can have a global impact. We are a part of the Antioch Ministries International church-planting organization.</p>
+					<p>My role on our team is the Media Director. I am in charge of all things that involve video, graphics, web, and sound. My weekly duties involve updating our sermon podcast, keeping the website up-to-date, building the Sunday service presentation, and running sound on Sunday morning.</p>
+					<p>Check out our church at <a target='_blank' href='http://antiocha2.org'>antiocha2.org</a> or visit us on a Sunday morning here in Ann Arbor!</p>
+				</div>
+			</article>
+			<article id='hobbies' class='panel'>
+				<header>HOBBIES</header>				
+				<div class='textbox desktop'>
+					<h2>Sports</h2>
+					<h4>Golf</h4>
+					<p>Year around sport in Texas.</p>
+					<h4>Snowboarding</h4>
+					<p>Living most of my life in a place where a heavy snow is 1" I haven't had the chance to snowboard much, but now living in Michigan I have a "mountain" minutes away!</p>
+					<h4>Disc Golf</h4>
+					<p>I just picked up disc golf after moving to Ann Arbor, but it is always a great time.</p>
+				</div>
+				<div class='textbox desktop'>
+					<h2>Technology</h2>						
+					<h4>Gadgets</h4>					
+					<h4>Photography</h4>
+					<p>Our 1st anniversary gift was a DSLR. It has been a blast learning how to use it and capture our life in pictures.</p>
+					<h4>Development</h4>
+					<h4>Sound</h4>
+				</div>
+				<div class='textbox desktop'>
+					<h2>Games</h2>
+					<h4><a target='_blank' href='http://www.dota2.com'>DOTA 2</a></h4>
+					<p>Hands down my favorite game. I've been playing on and off since college and the game has evolved quite a bit especially with Valve taking over development, but has never become dull.</p> 
+					<h4>Board Games</h4>
+				</div>
+				<div class='textbox desktop'>
+					<h2>Watching</h2>
+					<h4><a target='_blank' href='http://www.cbs.com/shows/person_of_interest/'>Person of Interest</a></h4>
+					<p>Staci and I's favorite show. It is centered around "The Machine" that is used by the US government to spy on everyone to prevent acts of terror. The plot is deep and character development is very well done. If you aren't watching it you should be.</p>
+					<h4>Castle</h4>
+					<h4>The Mentalist</h4>
+					<h4>eSports</h4>
+					<h4>Football</h4>												
+				</div>
+				<div class='textbox mobile'>
+					<h2>Sports</h2>
+					<h4>Golf</h4>
+					<p>Year around sport in Texas.</p>
+					<h4>Snowboarding</h4>
+					<p>Living most of my life in a place where a heavy snow is 1" I haven't had the chance to snowboard much, but now living in Michigan I have a "mountain" minutes away!</p>
+					<h4>Disc Golf</h4>
+					<p>I just picked up disc golf after moving to Ann Arbor, but it is always a great time.</p>				
+					<h2>Technology</h2>						
+					<h4>Gadgets</h4>
+					<p>Of all kinds. Most recently, Google Glass.</p>
+					<h4>Photography</h4>
+					<p>Our 1st anniversary gift was a DSLR. It has been a blast learning how to use it and capture our life in pictures.</p>
+					<h4>Development</h4>
+					<h4>Sound</h4>						
+					<h4>Video</h4>				
+					<h2>Games</h2>
+					<h4><a target='_blank' href='http://www.dota2.com'>DOTA 2</a></h4>
+					<p>Hands down my favorite game. I've been playing on and off since college and the game has evolved quite a bit especially with Valve taking over development, but has never become dull.</p>
+					<h4>Board Games</h4>				
+					<h2>Watching</h2>
+					<h4><a target='_blank' href='http://www.cbs.com/shows/person_of_interest/'>Person of Interest</a></h4>
+					<p>Staci and I's favorite show. It is centered around "The Machine" that is used by the US government to spy on everyone to prevent acts of terror. The plot is deep and character development is very well done. If you aren't watching it you should be.</p>
+					<h4>Castle</h4>
+					<h4>The Mentalist</h4>
+					<h4>eSports</h4>
+					<h4>Football</h4>												
+				</div>
+			</article>
+			<article id='contact' class='panel'>
+				<header>CONTACT</header>
+				<div class='textbox'>
+					<p>I would love to hear from you!</p>
+					<p>Feel free to download my resume, contact me via email, or follow me on social media.</p>
+					<p>
+						<a target='_blank' href='mailto:skyler.gast@gmail.com'><i style='color:black' class="fa fa-envelope fa-2x"></i></a>
+						<a target='_blank' href='http://www.facebook.com/skylergast'><i style='color: #1A356E' class="fa fa-facebook-square fa-2x"></i></a>
+						<a target='_blank' href='http://www.twitter.com/skylergast'><i class="fa fa-twitter-square fa-2x"></i></a>
+						<a target='_blank' href='http://www.instagram.com/skylergast'><i style='color:black' class="fa fa-instagram fa-2x"></i></a>
+						<a target='_blank' href='https://plus.google.com/u/0/108386496308256196108/posts'><i style='color:red' class="fa fa-google-plus-square fa-2x"></i></a>
+						<a target='_blank' href='https://dl.dropboxusercontent.com/u/6816253/SkylerGast-Resume.pdf'><i style='color:black' class="fa fa-paperclip fa-2x"></i></a>
+					</p>						
+				</div>
+			</article>
+		</section>
+	</body>
+</html>
+<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
